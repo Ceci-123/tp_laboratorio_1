@@ -53,6 +53,7 @@ int main(void) {
 	            {
 	                printf("ingrese numero:  ");
 	                scanf("%f", &segundOperando);
+	                printf("(a = %.2f)", primerOperando);
 	                printf("(b = %.2f)", segundOperando);
 	                cambiarFlagATrue(&flagSegundOperando);
 	                system("pause");

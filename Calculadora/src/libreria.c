@@ -11,7 +11,7 @@
 
 int menu(){
     int opcion;
-    system("cls");
+    //system("cls");
     printf("        *****************************\n");
     printf("        *****************************\n");
     printf("        ******** CALCULADORA ********\n");
@@ -26,7 +26,7 @@ int menu(){
     printf("          Calcular la division (a/b)\n");
     printf("          Calcular el factorial (a!)\n");
     printf(" 4. Informar los resultados  \n");
-    printf("5. para salir \n");
+    printf(" 5. para salir \n");
     scanf("%d", &opcion);
     return opcion;
 
