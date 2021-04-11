@@ -34,7 +34,10 @@ int menu(){
 
 void cambiarFlagATrue (int* f)
 {
-    *f = 1;
+	if(f != NULL)
+	{
+	*f = 1;
+	}
 }
 
 void informe(float a, float b, float c, float d, float e, float f, int g, float h, float i)

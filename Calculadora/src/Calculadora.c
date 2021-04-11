@@ -39,24 +39,23 @@ int main(void) {
 	            case 1:
 	            printf("ingrese numero:  ");
 	            scanf("%f", &primerOperando);
-	            printf("(a = %.2f)", primerOperando);
+	            printf("(a = %.2f)\n", primerOperando);
 	            cambiarFlagATrue(&flagPrimerOperando);
-	            system("pause");
 	            break;
 
 	            case 2:
 	            if(flagPrimerOperando == 0)
 	            {
 	                printf("primero ingrese el primer operando\n");
-	                system("pause");
+
 	            } else
 	            {
 	                printf("ingrese numero:  ");
 	                scanf("%f", &segundOperando);
 	                printf("(a = %.2f)", primerOperando);
-	                printf("(b = %.2f)", segundOperando);
+	                printf("(b = %.2f)\n", segundOperando);
 	                cambiarFlagATrue(&flagSegundOperando);
-	                system("pause");
+
 	            }
 	            break;
 
@@ -71,11 +70,11 @@ int main(void) {
 	            factorial(primerOperando, &resultadoFactorialPrimero);
 	            factorial(segundOperando, &resultadoFactorialSegundo);
 	            cambiarFlagATrue(&flagOperaciones);
-	            system("pause");
+
 	            } else
 	            {
 	                printf("Primero debe ingresar los operandos.......\n");
-	                system("pause");
+
 	            }
 	            break;
 
@@ -88,7 +87,7 @@ int main(void) {
 	            {
 	                printf("Primero debe realizar las operaciones.......\n");
 	            }
-	            system("pause");
+
 	            break;
 
 	            case 5:
