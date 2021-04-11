@@ -106,3 +106,10 @@ void factorial(float a, float *b)
 
 }
 
+void cambiarFlagAFalse (int* f)
+{
+	if(f != NULL)
+	{
+	*f = 0;
+	}
+}

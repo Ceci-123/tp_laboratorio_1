@@ -89,7 +89,12 @@ int dividir(float a, float b, float* c);
 void factorial(float a, float*b);
 
 
-
+/** \brief Cambia el valor de una bandera a false (escribe un 0)
+ *
+ * \param El puntero a la variable de la bandera
+ *
+ */
+void cambiarFlagAFalse (int* f);
 
 
 #endif /* LIBRERIA_H_ */

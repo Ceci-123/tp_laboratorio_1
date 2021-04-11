@@ -82,6 +82,9 @@ int main(void) {
 	            if(flagOperaciones ==1)
 	            {
 	                informe(resultadoSuma, resultadoResta, resultadoMultiplicacion, resultadoDivision, resultadoFactorialPrimero, resultadoFactorialSegundo, comoSalioLaDivision, primerOperando, segundOperando);
+	                cambiarFlagAFalse(&flagOperaciones);
+	                cambiarFlagAFalse(&flagPrimerOperando);
+	                cambiarFlagAFalse(&flagSegundOperando);
 	            }
 	            else
 	            {
