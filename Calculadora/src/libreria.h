@@ -25,15 +25,15 @@ void cambiarFlagATrue (int* f);
 
 /** \brief Muestra en pantalla el resultado de las operaciones matematicas realizadas
  *
- * \param El resultado de la operacion de suma
- * \param El resultado de la operacion de resta
- * \param El resultado de la operacion de multiplicacion
- * \param El resultado de la operacion de division
- * \param El resultado de la operacion de factorial del primer numero
- * \param El resultado de la operacion de factorial del segundo numero
- * \param El valor que devolvio la funcion de division
- * \param El primer operando
- * \param El segundo operando
+ * \param El resultado de la operacion de suma (float)
+ * \param El resultado de la operacion de resta (float)
+ * \param El resultado de la operacion de multiplicacion (float)
+ * \param El resultado de la operacion de division (float)
+ * \param El resultado de la operacion de factorial del primer numero (float)
+ * \param El resultado de la operacion de factorial del segundo numero (float)
+ * \param El valor que devolvio la funcion de division (entero)
+ * \param El primer operando (float)
+ * \param El segundo operando (float)
  *
  */
 void informe(float a, float b, float c, float d, float e, float f, int g, float h, float i);
