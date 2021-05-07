@@ -31,5 +31,7 @@ int sortEmployees(eEmployee lista[], int tamanio, int order);
 
 int modificarEmployee(eEmployee lista[], int tamanio, int id);
 
+int informeContable(eEmployee lista[], int tamanio);
+
 
 #endif // ARRAYEMPLOYEES_H_INCLUDED

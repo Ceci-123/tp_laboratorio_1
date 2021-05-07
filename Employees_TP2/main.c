@@ -25,6 +25,8 @@ int main()
  int devolucionDeRemove;
  int flagIniciacion = 0;
  int empleadoElegido;
+ int devolucionDeModificar;
+ int opcion;
 
  // inicializo array
 
@@ -59,8 +61,9 @@ int main()
         printf("Ingrese su apellido :");
         fflush(stdin);
         gets(auxiliar.lastName);
-        printf("Ingrese su sector :");
+        printf("Ingrese su sector:");
         scanf("%d", &auxiliar.sector);
+
         printf("Ingrese su salario :");
         scanf("%f", &auxiliar.salary);
         devolucionDeAdd = addEmployees(listadoEmpleados, TAM, numeroDeId, auxiliar.name, auxiliar.lastName, auxiliar.salary, auxiliar.sector);
@@ -73,7 +76,7 @@ int main()
         }
         else
         {
-            printf("Ocurrio un error, no pudo ingresarse el empleado");
+            printf("Ocurrio un error, no pudo ingresarse el empleado\n");
             system("pause");
         }
         break;
@@ -83,7 +86,19 @@ int main()
             printEmployee(listadoEmpleados, TAM);
             printf("Ingrese numero de identificacion del empleado que desea modificar");
             scanf("%d", &empleadoElegido);
-            system("pause");
+            devolucionDeModificar = modificarEmployee(listadoEmpleados, TAM, empleadoElegido);
+            if(devolucionDeModificar)
+            {
+                printf("hubo un error en la modificacion\n");
+                system("pause");
+            }
+            else
+            {
+                printf("Modificacion realizada con exito\n");
+                system("pause");
+            }
+
+
         }
         else
         {
@@ -120,8 +135,31 @@ int main()
     case 4:
         if(flagIngreso == 1)
         {
-            printEmployee(listadoEmpleados, TAM);
-            system("pause");
+            printf("Para obtener un listado de empleados ordenado alfabeticamente\n por apellido ascendente y sector ingrese 1\n");
+            printf("Para obtener un listado de empleados ordenado alfabeticamente\n por apellido descendente y sector ingrese 2\n");
+            printf("Para obtener un informe sobre los salarios ingrese 3\n");
+            scanf("%d", &opcion);
+            switch(opcion)
+            {
+            case 1:
+                sortEmployees(listadoEmpleados, TAM, 1);
+                printEmployee(listadoEmpleados, TAM);
+                system("pause");
+            break;
+            case 2:
+                sortEmployees(listadoEmpleados, TAM, 0);
+                printEmployee(listadoEmpleados, TAM);
+                system("pause");
+            break;
+            case 3:
+                informeContable(listadoEmpleados, TAM);
+            break;
+            default:
+                printf("Opcion no valida\n");
+                system("pause");
+                break;
+            }
+
         }
         else
         {

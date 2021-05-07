@@ -81,11 +81,12 @@ int printEmployee(eEmployee lista[], int tamanio)
     {
           printf("------------- NOMINA DE EMPLEADOS ------------------\n");
           printf("Legajo  Nombre     Apellido     Salario  Sector\n");
+          printf("----------------------------------------------------\n");
           for(int i=0; i< tamanio; i++)
              {
                  if(lista[i].isEmpty == 0)
                  {
-                     printf("%2d  %10s  %10s     %5.2f  %2d \n ", lista[i].id, lista[i].name, lista[i].lastName, lista[i].salary, lista[i].sector);
+                     printf("%2d  %10s  %10s    %6.2f  %2d\n ", lista[i].id, lista[i].name, lista[i].lastName, lista[i].salary, lista[i].sector);
                  }
 
              }
@@ -154,8 +155,56 @@ int removeEmployee(eEmployee lista[], int tamanio, int indice)
 
 int sortEmployees(eEmployee lista[], int tamanio, int order)
 {
-    //1 up 0 down  -1 error y 0 ok
-    return 0;
+    eEmployee auxiliarEmployee;
+    int todoOk = -1;
+
+    if(lista != NULL && tamanio > 0)
+    {
+        if(order == 1) // orden up
+    {
+        for(int i= 0; i < tamanio -1; i++)
+    {
+        for(int j= i+1; j < tamanio; j++)
+        {
+            if(strcmp(lista[i].lastName, lista[j].lastName) > 0)
+            {
+                //hacer swap
+                auxiliarEmployee = lista[i];
+                lista[i] = lista[j];
+                lista[j] = auxiliarEmployee;
+                todoOk = 0;
+
+            }
+
+        }  // segundo for
+
+    }  // primer for
+    }
+    if(order == 0) // order down
+    {
+         for(int i= 0; i < tamanio -1; i++)
+    {
+        for(int j= i+1; j < tamanio; j++)
+        {
+            if(strcmp(lista[i].lastName, lista[j].lastName) < 0)
+            {
+                //hacer swap
+                auxiliarEmployee = lista[i];
+                lista[i] = lista[j];
+                lista[j] = auxiliarEmployee;
+                todoOk = 0;
+
+            }
+
+        }  // segundo for
+
+    }  // primer for
+    }
+
+    }
+
+
+    return todoOk;
 }
 
 int modificarEmployee(eEmployee lista[], int tamanio, int id)
@@ -163,6 +212,9 @@ int modificarEmployee(eEmployee lista[], int tamanio, int id)
  int todoOk = -1;
  int indice;
  int opcion;
+ char auxiliarChar[20];
+ float auxiliarFloat = 0;
+ int auxiliarEntero = 0;
 
     if(lista != NULL && tamanio > 0)
     {
@@ -170,28 +222,38 @@ int modificarEmployee(eEmployee lista[], int tamanio, int id)
         if(indice != -1)
         {
                // encontre el que quiero modificar
-                printf("Si desea modificar nombre ingrese 1");
-                printf("Si desea modificar apellido ingrese 2");
-                printf("Si desea modificar salario ingrese 3");
-                printf("Si desea modificar sector ingrese 4");
+                printf("Si desea modificar nombre ingrese 1\n");
+                printf("Si desea modificar apellido ingrese 2\n");
+                printf("Si desea modificar salario ingrese 3\n");
+                printf("Si desea modificar sector ingrese 4\n");
                 scanf("%d", &opcion);
 
                 switch(opcion)
                 {
                 case 1:
                     printf("Nuevo nombre: ");
+                    fflush(stdin);
+                    gets(auxiliarChar);
+                    strcpy(lista[indice].name,auxiliarChar);
                     todoOk = 0;
                     break;
                 case 2:
                     printf("Nuevo apellido: ");
+                    fflush(stdin);
+                    gets(auxiliarChar);
+                    strcpy(lista[indice].lastName,auxiliarChar);
                     todoOk = 0;
                     break;
                 case 3:
                     printf("Nuevo salario: ");
+                    scanf("%f", &auxiliarFloat);
+                    lista[indice].salary = auxiliarFloat;
                     todoOk = 0;
                     break;
                 case 4:
                     printf("Nuevo sector: ");
+                    scanf("%d", &auxiliarEntero);
+                    lista[indice].sector = auxiliarEntero;
                     todoOk = 0;
                     break;
                 default:
@@ -206,4 +268,37 @@ int modificarEmployee(eEmployee lista[], int tamanio, int id)
     return todoOk;
 }
 
+int informeContable(eEmployee lista[], int tamanio)
+{
+    int todoOk = -1;
+    float acumuladorSalarios = 0;
+    float promedio = 0;
+    int contadorDeEmpleadosBuenSueldo;
+
+    if(lista != NULL && tamanio > 0)
+    {
+        for(int i= 0; i < tamanio; i ++)
+    {
+       acumuladorSalarios += lista[i].salary;
+    }
+    promedio = acumuladorSalarios / tamanio;
+
+    for(int i= 0; i < tamanio; i ++)
+    {
+       if(lista[i].salary > promedio)
+       {
+           contadorDeEmpleadosBuenSueldo ++;
+       }
+    }
+    printf("-----------------------------------------------------------------\n\n");
+    printf("El total de salarios de la empresa es de %6.2f $\n", acumuladorSalarios);
+    printf("El salario promedio es de %6.2f $\n", promedio);
+    printf("%2d de nuestros empleados superan el salario promedio\n", contadorDeEmpleadosBuenSueldo);
+    printf("-----------------------------------------------------------------\n\n");
+    system("pause");
+    todoOk = 0;
+    }
+
+    return todoOk;
+}
 
