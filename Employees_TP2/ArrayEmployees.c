@@ -20,7 +20,7 @@ int menu(){
     return opcion;
 }
 
-int addEmployees (eEmployee lista[], int tamanio, int id, char name[], char lastName[], float salary, int sector)
+int addEmployees (eEmployee lista[], int tamanio, int id, char name[], char lastName[], float salary, char sector[])
 {
     int todoOk = -1;
     int posicion;
@@ -39,7 +39,7 @@ int addEmployees (eEmployee lista[], int tamanio, int id, char name[], char last
             strcpy(lista[posicion].name, name);
             strcpy(lista[posicion].lastName, lastName);
             lista[posicion].salary = salary;
-            lista[posicion].sector = sector;
+            strcpy(lista[posicion].sector, sector);
             lista[posicion].id = id;
 
         }
@@ -86,7 +86,7 @@ int printEmployee(eEmployee lista[], int tamanio)
              {
                  if(lista[i].isEmpty == 0)
                  {
-                     printf("%2d  %10s  %10s    %6.2f  %2d\n ", lista[i].id, lista[i].name, lista[i].lastName, lista[i].salary, lista[i].sector);
+                     printf("%2d  %20s  %20s  %6.2f  %15s\n ", lista[i].id, lista[i].name, lista[i].lastName, lista[i].salary, lista[i].sector);
                  }
 
              }
@@ -214,7 +214,6 @@ int modificarEmployee(eEmployee lista[], int tamanio, int id)
  int opcion;
  char auxiliarChar[20];
  float auxiliarFloat = 0;
- int auxiliarEntero = 0;
 
     if(lista != NULL && tamanio > 0)
     {
@@ -252,8 +251,9 @@ int modificarEmployee(eEmployee lista[], int tamanio, int id)
                     break;
                 case 4:
                     printf("Nuevo sector: ");
-                    scanf("%d", &auxiliarEntero);
-                    lista[indice].sector = auxiliarEntero;
+                    fflush(stdin);
+                    gets(auxiliarChar);
+                    strcpy(lista[indice].sector,auxiliarChar);
                     todoOk = 0;
                     break;
                 default:

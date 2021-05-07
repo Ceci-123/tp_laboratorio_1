@@ -61,9 +61,19 @@ int main()
         printf("Ingrese su apellido :");
         fflush(stdin);
         gets(auxiliar.lastName);
-        printf("Ingrese su sector:");
-        scanf("%d", &auxiliar.sector);
-
+        printf("Ingrese su sector (Ventas, RRHH, Contable, Administracion, Sistemas:");
+        fflush(stdin);
+        gets(auxiliar.sector);
+        while( strcmp(auxiliar.sector, "Ventas") != 0 &&
+               strcmp(auxiliar.sector, "RRHH") != 0 &&
+               strcmp(auxiliar.sector, "Contable") != 0 &&
+               strcmp(auxiliar.sector, "Administracion") != 0 &&
+               strcmp(auxiliar.sector, "Sistemas") != 0 )
+        {
+            printf("Error, reingrese su sector (Ventas, RRHH, Contable, Administracion, Sistemas:");
+            fflush(stdin);
+            gets(auxiliar.sector);
+        }
         printf("Ingrese su salario :");
         scanf("%f", &auxiliar.salary);
         devolucionDeAdd = addEmployees(listadoEmpleados, TAM, numeroDeId, auxiliar.name, auxiliar.lastName, auxiliar.salary, auxiliar.sector);

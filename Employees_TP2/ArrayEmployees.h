@@ -8,12 +8,12 @@ typedef struct{
           char name[51];
           char lastName[51];
           float salary;
-          int sector;
+          char sector[15];
           int isEmpty;
 
 } eEmployee;
 
-int addEmployees (eEmployee lista[], int tamanio, int id, char name[], char lastName[], float salary, int sector);
+int addEmployees (eEmployee lista[], int tamanio, int id, char name[], char lastName[], float salary, char sector[]);
 
 void cambiarFlag(int* bandera);
 
