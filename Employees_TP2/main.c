@@ -76,6 +76,7 @@ int main()
         }
         printf("Ingrese su salario :");
         scanf("%f", &auxiliar.salary);
+
         devolucionDeAdd = addEmployees(listadoEmpleados, TAM, numeroDeId, auxiliar.name, auxiliar.lastName, auxiliar.salary, auxiliar.sector);
         if(devolucionDeAdd == 0)
         {
@@ -126,12 +127,12 @@ int main()
             devolucionDeRemove = removeEmployee(listadoEmpleados, TAM, empleadoElegido);
             if(devolucionDeRemove == 0)
             {
-                printf("El empleado fue dado de baja exitosamente");
+                printf("El empleado fue dado de baja exitosamente\n");
                 system("pause");
             }
             else
             {
-                printf("El empleado no pudo ser dado de baja");
+                printf("El empleado no pudo ser dado de baja\n");
                 system("pause");
             }
         }

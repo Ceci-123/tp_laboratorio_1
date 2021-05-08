@@ -314,6 +314,10 @@ int informeContable(eEmployee lista[], int tamanio)
     printf("-----------------------------------------------------------------\n\n");
     printf("El total de salarios de la empresa es de %6.2f $\n", acumuladorSalarios);
     printf("El salario promedio es de %6.2f $\n", promedio);
+    if(contadorDeEmpleadosBuenSueldo == 0)
+    {
+        printf("Ninguno de nuestros empleados supera el salario promedio");
+    }
     printf("%2d de nuestros empleados superan el salario promedio\n", contadorDeEmpleadosBuenSueldo);
     printf("-----------------------------------------------------------------\n\n");
     system("pause");
