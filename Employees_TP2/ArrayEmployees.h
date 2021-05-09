@@ -1,7 +1,6 @@
 #ifndef ARRAYEMPLOYEES_H_INCLUDED
 #define ARRAYEMPLOYEES_H_INCLUDED
 
-int menu(void);
 
 typedef struct{
           int id;
@@ -12,6 +11,13 @@ typedef struct{
           int isEmpty;
 
 } eEmployee;
+
+/** \brief Presenta un menu de opciones en pantalla
+ *
+ * \return Un entero, el numero de opcion que el usuario elije
+ *
+ */
+int menu(void);
 
 /** \brief  Agrega los valores recibidos como parametros en la primer posicion vacia del array recibido como parametro
  *
@@ -112,5 +118,12 @@ int modificarEmployee(eEmployee lista[], int tamanio, int id);
  */
 int informeContable(eEmployee lista[], int tamanio);
 
-
+/** \brief Valida si una cadena ingresada contiene caracteres numericos
+ *
+ * \param La cadena string a analizar
+ * \param La direccion de memoria de la variable donde se quiere escribir el numero
+ * \return Devuelve un entero 1 si es un numero o -1 si no lo es
+ *
+ */
+int validarNumero(char cadena[], float *variable);
 #endif // ARRAYEMPLOYEES_H_INCLUDED

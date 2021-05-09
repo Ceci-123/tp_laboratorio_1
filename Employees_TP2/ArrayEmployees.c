@@ -327,3 +327,23 @@ int informeContable(eEmployee lista[], int tamanio)
     return todoOk;
 }
 
+int validarNumero(char cadena[], float *variable)
+{
+    int todoOk = 0;
+
+    for(int i= 0; i < strlen(cadena) - 1; i++)
+    {
+        if(cadena[i] < '0' || cadena[i] > '9' )
+        {
+            todoOk = -1;
+        }
+        else
+        {
+            todoOk = 1;
+            *variable = atof(cadena);
+
+        }
+    }
+
+    return todoOk;
+}

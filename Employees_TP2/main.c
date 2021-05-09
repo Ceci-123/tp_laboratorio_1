@@ -27,6 +27,8 @@ int main()
  int empleadoElegido;
  int devolucionDeModificar;
  int opcion;
+ int devolucionDeValidacion;
+ char auxiliarSalario[10];
 
  // inicializo array
 
@@ -75,8 +77,18 @@ int main()
             gets(auxiliar.sector);
         }
         printf("Ingrese su salario :");
-        scanf("%f", &auxiliar.salary);
+        fflush(stdin);
+        gets(auxiliarSalario);
+        // aca valido salario
+        devolucionDeValidacion = validarNumero(auxiliarSalario, &auxiliar.salary);
+        if(devolucionDeValidacion != 1)
+        {
+            printf("Error, reingrese su salario :");
+            fflush(stdin);
+            gets(auxiliarSalario);
+            devolucionDeValidacion = validarNumero(auxiliarSalario, &auxiliar.salary);
 
+        }
         devolucionDeAdd = addEmployees(listadoEmpleados, TAM, numeroDeId, auxiliar.name, auxiliar.lastName, auxiliar.salary, auxiliar.sector);
         if(devolucionDeAdd == 0)
         {
