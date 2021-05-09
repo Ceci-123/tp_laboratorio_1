@@ -5,18 +5,28 @@
 
 int menu(){
     int opcion;
+    char ingreso[2];
+
     system("cls");
 
     printf("  --------------------------------------\n");
-    printf("  -       Sistema de Empleados          -\n");
-    printf("  -                                     -\n");
+    printf("  --------------------------------------\n");
+    printf("  -            Alta, baja y             -\n");
+    printf("  -            modificacion             -\n");
+    printf("  -            de Empleados             -\n");
     printf("  ---------------------------------------\n");
+    printf("  --------------------------------------\n");
     printf(" 1. Alta de un empleado\n");
     printf(" 2. Modificacion de un empleado\n");
     printf(" 3. Baja de un empleado\n");
     printf(" 4. Informar sobre los empleados \n");
     printf(" 5. Salir del menu\n");
-    scanf("%d", &opcion);
+
+    fflush(stdin);
+    gets(ingreso);
+
+    opcion = atoi(ingreso);
+
     return opcion;
 }
 

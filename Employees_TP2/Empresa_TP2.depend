@@ -35,15 +35,15 @@
 	<string.h>
 	"ArrayEmployees.h"
 
-1620575275 source:c:\users\user\desktop\tp1calculadoraeclipse\employees_tp2\arrayemployees.c
+1620577145 source:c:\users\user\desktop\tp1calculadoraeclipse\employees_tp2\arrayemployees.c
 	"ArrayEmployees.h"
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 
-1620574353 c:\users\user\desktop\tp1calculadoraeclipse\employees_tp2\arrayemployees.h
+1620577217 c:\users\user\desktop\tp1calculadoraeclipse\employees_tp2\arrayemployees.h
 
-1620575007 source:c:\users\user\desktop\tp1calculadoraeclipse\employees_tp2\main.c
+1620575634 source:c:\users\user\desktop\tp1calculadoraeclipse\employees_tp2\main.c
 	<ctype.h>
 	<stdio.h>
 	<stdlib.h>

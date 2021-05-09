@@ -118,7 +118,7 @@ int modificarEmployee(eEmployee lista[], int tamanio, int id);
  */
 int informeContable(eEmployee lista[], int tamanio);
 
-/** \brief Valida si una cadena ingresada contiene caracteres numericos
+/** \brief Valida si una cadena ingresada contiene caracteres numericos, y la convierte a float
  *
  * \param La cadena string a analizar
  * \param La direccion de memoria de la variable donde se quiere escribir el numero
@@ -126,4 +126,5 @@ int informeContable(eEmployee lista[], int tamanio);
  *
  */
 int validarNumero(char cadena[], float *variable);
+
 #endif // ARRAYEMPLOYEES_H_INCLUDED
