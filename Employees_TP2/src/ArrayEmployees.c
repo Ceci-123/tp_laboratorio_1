@@ -1,3 +1,10 @@
+/*
+ * ArrayEmployees.c
+ *
+ *  Created on: 11 may. 2021
+ *      Author: user
+ */
+
 #include "ArrayEmployees.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -41,7 +48,7 @@ int addEmployees (eEmployee lista[], int tamanio, int id, char name[], char last
         if(posicion == -1)
         {
             printf("no hay posiciones disponibles para ingresar otro empleado \n");
-            system("pause");
+
         }
         else
         {
@@ -281,7 +288,7 @@ int modificarEmployee(eEmployee lista[], int tamanio, int id)
                     break;
                 default:
                     printf("opcion no valida");
-                    system("pause");
+
                     break;
                 }
 
@@ -296,7 +303,7 @@ int informeContable(eEmployee lista[], int tamanio)
     int todoOk = -1;
     float acumuladorSalarios = 0;
     float promedio = 0;
-    int contadorDeEmpleadosBuenSueldo;
+    int contadorDeEmpleadosBuenSueldo = 0;
     int contadorEmpleados = 0;
 
     if(lista != NULL && tamanio > 0)
@@ -331,7 +338,7 @@ int informeContable(eEmployee lista[], int tamanio)
        printf("%2d de nuestros empleados superan el salario promedio\n", contadorDeEmpleadosBuenSueldo);
     }
     printf("-----------------------------------------------------------------\n\n");
-    system("pause");
+
     todoOk = 0;
     }
 
@@ -370,3 +377,4 @@ void mostrarSector(int idSector, char nombreSector[15])
     }
 
 }
+

@@ -1,5 +1,12 @@
-#ifndef ARRAYEMPLOYEES_H_INCLUDED
-#define ARRAYEMPLOYEES_H_INCLUDED
+/*
+ * ArrayEmployees.h
+ *
+ *  Created on: 11 may. 2021
+ *      Author: user
+ */
+
+#ifndef ARRAYEMPLOYEES_H_
+#define ARRAYEMPLOYEES_H_
 
 
 typedef struct{
@@ -28,7 +35,7 @@ int menu(void);
  * \param  Un array de caracteres, el apellido del empleado
  * \param  Un numero flotante, el sueldo del empleado
  * \param  Un entero, el sector al que pertenece el empleado
- * \return  Devuelve 0 si realiza la carga de datos o devuelve -1 si hubo un error
+ * \return Devuelve 0 si realiza la carga de datos o devuelve -1 si hubo un error
  *
  */
 int addEmployees (eEmployee lista[], int tamanio, int id, char name[], char lastName[], float salary, int sector);
@@ -127,6 +134,13 @@ int informeContable(eEmployee lista[], int tamanio);
  */
 int validarNumero(char cadena[], float *variable);
 
+/** \brief Muestra la descripcion de los sectores
+ *
+ * \param El id del sector, un entero
+ * \param un array de caracteres para guardar la descripcion
+ *
+ */
 void mostrarSector(int idSector, char nombreSector[15]);
 
-#endif // ARRAYEMPLOYEES_H_INCLUDED
+
+#endif /* ARRAYEMPLOYEES_H_ */
