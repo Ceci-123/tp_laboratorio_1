@@ -7,7 +7,7 @@ typedef struct{
           char name[51];
           char lastName[51];
           float salary;
-          char sector[15];
+          int sector;
           int isEmpty;
 
 } eEmployee;
@@ -27,11 +27,11 @@ int menu(void);
  * \param  Un array de caracteres, el nombre del empleado
  * \param  Un array de caracteres, el apellido del empleado
  * \param  Un numero flotante, el sueldo del empleado
- * \param  Un array de caracteres, el sector al que pertenece el empleado
+ * \param  Un entero, el sector al que pertenece el empleado
  * \return  Devuelve 0 si realiza la carga de datos o devuelve -1 si hubo un error
  *
  */
-int addEmployees (eEmployee lista[], int tamanio, int id, char name[], char lastName[], float salary, char sector[]);
+int addEmployees (eEmployee lista[], int tamanio, int id, char name[], char lastName[], float salary, int sector);
 
 /** \brief Cambia el valor de la bandera a true (1)
  *
@@ -126,5 +126,7 @@ int informeContable(eEmployee lista[], int tamanio);
  *
  */
 int validarNumero(char cadena[], float *variable);
+
+void mostrarSector(int idSector, char nombreSector[15]);
 
 #endif // ARRAYEMPLOYEES_H_INCLUDED

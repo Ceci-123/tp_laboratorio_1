@@ -63,18 +63,12 @@ int main()
         printf("Ingrese su apellido :");
         fflush(stdin);
         gets(auxiliar.lastName);
-        printf("Ingrese su sector (Ventas, RRHH, Contable, Administracion, Sistemas:");
-        fflush(stdin);
-        gets(auxiliar.sector);
-        while( strcmp(auxiliar.sector, "Ventas") != 0 &&
-               strcmp(auxiliar.sector, "RRHH") != 0 &&
-               strcmp(auxiliar.sector, "Contable") != 0 &&
-               strcmp(auxiliar.sector, "Administracion") != 0 &&
-               strcmp(auxiliar.sector, "Sistemas") != 0 )
+        printf("Ingrese su sector: 1-Ventas, 2-RRHH, 3-Contable, 4-Administracion, 5-Sistemas");
+        scanf("%d", &auxiliar.sector);
+        while(auxiliar.sector < 1 || auxiliar.sector > 5 )
         {
-            printf("Error, reingrese su sector (Ventas, RRHH, Contable, Administracion, Sistemas:");
-            fflush(stdin);
-            gets(auxiliar.sector);
+            printf("Error, reingrese su sector 1-Ventas, 2-RRHH, 3-Contable, 4-Administracion, 5-Sistemas");
+            scanf("%d", &auxiliar.sector);
         }
         printf("Ingrese su salario :");
         fflush(stdin);

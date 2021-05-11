@@ -30,7 +30,7 @@ int menu(){
     return opcion;
 }
 
-int addEmployees (eEmployee lista[], int tamanio, int id, char name[], char lastName[], float salary, char sector[])
+int addEmployees (eEmployee lista[], int tamanio, int id, char name[], char lastName[], float salary, int sector)
 {
     int todoOk = -1;
     int posicion;
@@ -49,7 +49,7 @@ int addEmployees (eEmployee lista[], int tamanio, int id, char name[], char last
             strcpy(lista[posicion].name, name);
             strcpy(lista[posicion].lastName, lastName);
             lista[posicion].salary = salary;
-            strcpy(lista[posicion].sector, sector);
+            lista[posicion].sector = sector;
             lista[posicion].id = id;
 
         }
@@ -87,6 +87,8 @@ int initEmployee(eEmployee lista[], int tamanio){
 int printEmployee(eEmployee lista[], int tamanio)
 {
     int todoOk = -1;
+    char auxiliarChar[15];
+
     if(lista != NULL && tamanio > 0)
     {
           printf("-------------------------- NOMINA DE EMPLEADOS --------------------------------\n");
@@ -96,7 +98,8 @@ int printEmployee(eEmployee lista[], int tamanio)
              {
                  if(lista[i].isEmpty == 0)
                  {
-                     printf("%2d  %20s  %20s  %6.2f  %15s\n ", lista[i].id, lista[i].name, lista[i].lastName, lista[i].salary, lista[i].sector);
+                     mostrarSector(lista[i].sector, auxiliarChar);
+                     printf("%2d  %20s %20s        %6.2f        %2d  %s\n ", lista[i].id, lista[i].name, lista[i].lastName, lista[i].salary, lista[i].sector, auxiliarChar);
                  }
 
              }
@@ -176,7 +179,7 @@ int sortEmployees(eEmployee lista[], int tamanio, int order)
     {
         for(int j= i+1; j < tamanio; j++)
         {
-            if(strcmp(lista[i].lastName, lista[j].lastName) > 0 || (strcmp(lista[i].lastName, lista[j].lastName) ==0 && (strcmp(lista[i].sector, lista[j].sector) > 0 )))
+            if(strcmp(lista[i].lastName, lista[j].lastName) > 0 || (strcmp(lista[i].lastName, lista[j].lastName) ==0 && lista[i].sector < lista[j].sector))
             {
                 //hacer swap
                 auxiliarEmployee = lista[i];
@@ -196,7 +199,7 @@ int sortEmployees(eEmployee lista[], int tamanio, int order)
     {
         for(int j= i+1; j < tamanio; j++)
         {
-            if(strcmp(lista[i].lastName, lista[j].lastName) < 0 || (strcmp(lista[i].lastName, lista[j].lastName) ==0 && (strcmp(lista[i].sector, lista[j].sector) < 0 )))
+            if(strcmp(lista[i].lastName, lista[j].lastName) < 0 || (strcmp(lista[i].lastName, lista[j].lastName) ==0 && lista[i].sector < lista[j].sector))
             {
                 //hacer swap
                 auxiliarEmployee = lista[i];
@@ -224,6 +227,7 @@ int modificarEmployee(eEmployee lista[], int tamanio, int id)
  int opcion;
  char auxiliarChar[20];
  float auxiliarFloat = 0;
+ int auxiliarInt = 0;
 
     if(lista != NULL && tamanio > 0)
     {
@@ -263,22 +267,16 @@ int modificarEmployee(eEmployee lista[], int tamanio, int id)
                     todoOk = 0;
                     break;
                 case 4:
-                    printf("Ingrese el nuevo sector: (Ventas, RRHH, Contable, Administracion, Sistemas)");
-                    fflush(stdin);
-                    gets(auxiliarChar);
-                    while( strcmp(auxiliarChar, "Ventas") != 0 &&
-                           strcmp(auxiliarChar, "RRHH") != 0 &&
-                           strcmp(auxiliarChar, "Contable") != 0 &&
-                           strcmp(auxiliarChar, "Administracion") != 0 &&
-                           strcmp(auxiliarChar, "Sistemas") != 0 )
-                      {
-                          printf("Error, reingrese su sector (Ventas, RRHH, Contable, Administracion, Sistemas:");
-                          fflush(stdin);
-                          gets(auxiliarChar);
-                       }
-
-                    strcpy(lista[indice].sector,auxiliarChar);
-                    printf("Nuevo sector: %s\n", auxiliarChar);
+                    printf("Ingrese el nuevo sector: 1-Ventas, 2-RRHH, 3-Contable, 4-Administracion, 5-Sistemas");
+                    scanf("%d", &auxiliarInt);
+                    while(auxiliarInt < 1 || auxiliarInt > 5 )
+                         {
+                           printf("Error, reingrese su sector 1-Ventas, 2-RRHH, 3-Contable, 4-Administracion, 5-Sistemas");
+                           scanf("%d", &auxiliarInt);
+                        }
+                    lista[indice].sector = auxiliarInt;
+                    mostrarSector(auxiliarInt, auxiliarChar);
+                    printf("Nuevo sector: %d %s\n", auxiliarInt, auxiliarChar);
                     todoOk = 0;
                     break;
                 default:
@@ -356,4 +354,16 @@ int validarNumero(char cadena[], float *variable)
     }
 
     return todoOk;
+}
+
+void mostrarSector(int idSector, char nombreSector[15])
+{
+    char sectores[5][15] = {"Ventas", "RRHH", "Contable", "Administracion", "Sistemas"};
+
+    if(idSector > 0 || idSector < 6 && nombreSector != NULL)
+    {
+        idSector = idSector -1;
+        strcpy(nombreSector, sectores[idSector]);
+    }
+
 }
