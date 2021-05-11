@@ -99,7 +99,7 @@ int printEmployee(eEmployee lista[], int tamanio)
                  if(lista[i].isEmpty == 0)
                  {
                      mostrarSector(lista[i].sector, auxiliarChar);
-                     printf("%2d  %20s %20s        %6.2f        %2d  %s\n ", lista[i].id, lista[i].name, lista[i].lastName, lista[i].salary, lista[i].sector, auxiliarChar);
+                     printf("%2d  %20s %20s        %6.2f        %2d  %s \n \n", lista[i].id, lista[i].name, lista[i].lastName, lista[i].salary, lista[i].sector, auxiliarChar);
                  }
 
              }
@@ -256,14 +256,14 @@ int modificarEmployee(eEmployee lista[], int tamanio, int id)
                     fflush(stdin);
                     gets(auxiliarChar);
                     strcpy(lista[indice].lastName,auxiliarChar);
-                    printf("Nuevo nombre: %s\n", auxiliarChar);
+                    printf("Nuevo apellido: %s\n", auxiliarChar);
                     todoOk = 0;
                     break;
                 case 3:
                     printf("Ingrese el nuevo salario: ");
                     scanf("%f", &auxiliarFloat);
                     lista[indice].salary = auxiliarFloat;
-                    printf("Nuevo salario: %f\n", auxiliarFloat);
+                    printf("Nuevo salario: %.2f\n", auxiliarFloat);
                     todoOk = 0;
                     break;
                 case 4:
@@ -324,9 +324,12 @@ int informeContable(eEmployee lista[], int tamanio)
     printf("El salario promedio es de %6.2f $\n", promedio);
     if(contadorDeEmpleadosBuenSueldo == 0)
     {
-        printf("Ninguno de nuestros empleados supera el salario promedio");
+        printf("Ninguno de nuestros empleados supera el salario promedio\n");
     }
-    printf("%2d de nuestros empleados superan el salario promedio\n", contadorDeEmpleadosBuenSueldo);
+    else
+    {
+       printf("%2d de nuestros empleados superan el salario promedio\n", contadorDeEmpleadosBuenSueldo);
+    }
     printf("-----------------------------------------------------------------\n\n");
     system("pause");
     todoOk = 0;
@@ -360,7 +363,7 @@ void mostrarSector(int idSector, char nombreSector[15])
 {
     char sectores[5][15] = {"Ventas", "RRHH", "Contable", "Administracion", "Sistemas"};
 
-    if(idSector > 0 || idSector < 6 && nombreSector != NULL)
+    if((idSector > 0 || idSector < 6) && nombreSector != NULL)
     {
         idSector = idSector -1;
         strcpy(nombreSector, sectores[idSector]);
