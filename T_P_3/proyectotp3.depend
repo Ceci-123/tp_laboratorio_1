@@ -1,0 +1,32 @@
+# depslib dependency file v1.0
+1565993298 source:c:\users\user\desktop\proyectotp3\controller.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1565993298 c:\users\user\desktop\proyectotp3\linkedlist.h
+
+1623769340 c:\users\user\desktop\proyectotp3\employee.h
+
+1623770088 source:c:\users\user\desktop\proyectotp3\employee.c
+	"Employee.h"
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+
+1623784728 source:c:\users\user\desktop\proyectotp3\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+
+1565993298 c:\users\user\desktop\proyectotp3\controller.h
+
+1565993298 source:c:\users\user\desktop\proyectotp3\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+

@@ -1,13 +1,7 @@
-/*
- * biblioteca.c
- *
- *  Created on: 14 jun. 2021
- *      Author: user
- */
-
+#include "Employee.h"
+#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "biblioteca.h"
 
 int menu(){
     int opcion;
@@ -26,13 +20,11 @@ int menu(){
     printf(" 10.Salir \n");
     printf("\n  **********************************************************************\n");
     printf("  **********************************************************************\n");
-    //scanf("%d", &opcion);
     fflush(stdin);
     gets(ingreso);
     opcion = atoi(ingreso);
     return opcion;
 
 }
-
 
 
