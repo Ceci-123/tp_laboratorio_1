@@ -11,8 +11,8 @@ int main()
     // variables
 	char salir = 'n';
 	Employee* auxiliarEmpleado;
-	int id = 1;
-	int resultado;
+	int nextId = 1;
+	int resultado = 0;
 
     //inicializacion
     LinkedList* listaEmpleados = ll_newLinkedList();
@@ -20,7 +20,6 @@ int main()
     {
         printf("No se pudo crear la lista de empleados\n");
         system("pause");
-        exit(1);
     }
 
     do {
@@ -32,7 +31,7 @@ int main()
 		         resultado = controller_loadFromText("data.csv",listaEmpleados);
 		         if(resultado == 1)
                  {
-		             printf("Datos cargados con exito\n");  //if resultado
+		             printf("Datos cargados con exito\n");
                  }
                  else
                  {
@@ -44,7 +43,7 @@ int main()
 		         resultado = controller_loadFromBinary("data.bin", listaEmpleados);
 		         if(resultado == 1)
                  {
-		            printf("Datos cargados con exito\n");  //if resultado
+		            printf("Datos cargados con exito\n");
                  }
                  else
                  {
@@ -56,7 +55,7 @@ int main()
 		    	resultado = controller_addEmployee(listaEmpleados);
 		    	if(resultado == 1)
                 {
-		         	printf("Alta de empleado realizada\n");  //if resultado
+		         	printf("Alta de empleado realizada\n");
                 }
                 else
                 {
@@ -68,7 +67,7 @@ int main()
 		    	resultado = controller_editEmployee(listaEmpleados);
 		    	if(resultado == 1)
                 {
-		         	printf("Modificacion de empleado realizada\n");  //if resultado
+		         	printf("Modificacion de empleado realizada\n");
                 }
                 else
                 {
@@ -80,7 +79,7 @@ int main()
 		    	resultado = controller_removeEmployee(listaEmpleados);
 		    	if(resultado == 1)
                 {
-		        	printf("Baja de empleado realizada\n");  //if resultado
+		        	printf("Baja de empleado realizada\n");
                 }
                 else
                 {
@@ -108,7 +107,7 @@ int main()
 		    	resultado = controller_saveAsText("data.csv", listaEmpleados);
 		    	if(resultado == 1)
                  {
-		             printf("Datos cargados con exito\n");  //if resultado
+		             printf("Datos cargados con exito\n");
                  }
                  else
                  {
@@ -120,7 +119,7 @@ int main()
 		    	resultado = controller_saveAsBinary("data.bin", listaEmpleados);
 		    	if(resultado == 1)
                  {
-		             printf("Datos cargados con exito\n");  //if resultado
+		             printf("Datos cargados con exito\n");
                  }
                  else
                  {

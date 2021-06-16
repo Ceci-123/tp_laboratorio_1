@@ -31,9 +31,24 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Controller.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Controller.h" />
+		<Unit filename="Employee.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Employee.h" />
+		<Unit filename="LinkedList.h" />
+		<Unit filename="data.csv" />
+		<Unit filename="libLinkedList.a" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="parser.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="parser.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
