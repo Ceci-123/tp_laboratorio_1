@@ -82,7 +82,7 @@ int employee_getNombre(Employee* esteEmpleado,char* nombre)
     int todoOk = 0;
     if(esteEmpleado !=NULL && nombre != NULL)
     {
-        strcpy(esteEmpleado->nombre, nombre);
+        strcpy(nombre,esteEmpleado->nombre);
         todoOk = 1;
     }
     return todoOk;
