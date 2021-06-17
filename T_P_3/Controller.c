@@ -3,6 +3,7 @@
 #include "LinkedList.h"
 #include "Employee.h"
 #include "parser.h"
+#include "Controller.h"
 
 
 /** \brief Carga los datos de los empleados desde el archivo data.csv (modo texto).
@@ -64,34 +65,43 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
  */
 int controller_addEmployee(LinkedList* pArrayListEmployee)
 {
-    Employee* punteroAEmpleado;
+    Employee* auxiliarEmpleado;
     int todoOk = 0;
     int resultado = 0;
     char nombre[128];
     int horasTrabajadas;
     int sueldo;
     int id;
+    int control;
 
-    punteroAEmpleado = employee_new();
-    if(punteroAEmpleado != NULL)
+    auxiliarEmpleado = employee_new();
+    if(auxiliarEmpleado != NULL)
     {
        printf("Ingrese nombre del empleado\n");
        fflush(stdin);
        gets(nombre);
        printf("Ingrese cantidad de horas trabajadas\n");
-       scanf("%d", horasTrabajadas);
+       scanf("%d", &horasTrabajadas);
        printf("Ingrese sueldo del empleado\n");
-       scanf("%d", sueldo);
+       scanf("%d", &sueldo);
        id = 1;
        id++;
-       employee_setNombre(punteroAEmpleado, nombre);
-       employee_setSueldo(punteroAEmpleado, sueldo);
-       employee_setHorasTrabajadas(punteroAEmpleado, horasTrabajadas);
-       employee_setId(punteroAEmpleado, id);
+       control = employee_setNombre(auxiliarEmpleado, nombre);
+       printf("copie el nombre %d\n", control);
+       system("pause");
+       control = employee_setSueldo(auxiliarEmpleado, sueldo);
+       printf("copie el sueldo%d\n", control);
+       system("pause");
+       control = employee_setHorasTrabajadas(auxiliarEmpleado, horasTrabajadas);
+       printf("copie horas%d\n", control);
+       system("pause");
+       control = employee_setId(auxiliarEmpleado, id);
+       printf("copie el id%d\n", control);
+       system("pause");
 
     }
 
-    resultado = ll_add(pArrayListEmployee,punteroAEmpleado);
+    resultado = ll_add(pArrayListEmployee,auxiliarEmpleado);
     if(resultado == 1)
     {
        todoOk = 1;
@@ -178,7 +188,7 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
     controller_ListEmployee(pArrayListEmployee);
     printf("Ingrese el id del empleado que desea borrar\n");
     scanf("%d", &idABorrar);
-    indice = getIndiceXId();
+    indice = getIndiceXId(pArrayListEmployee, indice);
     if(indice == -1)
     {
         printf("El indice ingresado es incorrecto\n");
@@ -216,7 +226,7 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
         auxiliarEmpleado = ll_get(pArrayListEmployee, i);
         employee_getId(auxiliarEmpleado, &id);
         employee_getNombre(auxiliarEmpleado, nombre);
-        employee_getHorasTrabajadas(auxiliarEmpleado, horasTrabajadas);
+        employee_getHorasTrabajadas(auxiliarEmpleado, &horasTrabajadas);
         employee_getSueldo(auxiliarEmpleado, &sueldo);
         printf("%4d  %30s  %3d  %6d\n", id, nombre, horasTrabajadas, sueldo);
         todoOk = 1;
@@ -277,7 +287,8 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
                employee_getNombre(auxiliarEmpleado, nombre);
                employee_getHorasTrabajadas(auxiliarEmpleado, &horasTrabajadas);
                employee_getSueldo(auxiliarEmpleado, &sueldo);
-               fprintf(f,"&d,%s,%d,%d\n", id, nombre, horasTrabajadas, sueldo);
+               fprintf(f,"&d,%s,%d,%d \n", id, nombre, horasTrabajadas, sueldo);
+               // estoy pasando enteros --- modificar
                todoOk = 1;
            }
        }
@@ -322,6 +333,27 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
 
     fclose(f);
     return todoOk;
+
+}
+
+int getIndiceXId(LinkedList* pArrayLinkedList,int idABuscar)
+{
+    Employee* auxiliarEmpleado;
+    int tamanio;
+    int idIteracion;
+
+    tamanio = ll_len(pArrayLinkedList);
+    for(int i=0;i<tamanio;i++)
+    {
+        auxiliarEmpleado = ll_get(pArrayLinkedList,i);
+        employee_getId(auxiliarEmpleado,&idIteracion);
+        if(idIteracion == idABuscar)
+        {
+            return i;
+        }
+
+    }
+    return -1;
 
 }
 

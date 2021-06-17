@@ -40,89 +40,108 @@ Employee* employee_new()
      return todoOk;
 }
 
-int employee_setId(Employee* this,int id)
+int employee_setId(Employee* esteEmpleado,int id)
 {
     int todoOk = 0;
-    if(this != NULL)
+    if(esteEmpleado != NULL)
     {
-        this->id = id;
+        esteEmpleado->id = id;
         todoOk = 1;
     }
     return todoOk;
 }
-int employee_getId(Employee* this,int* id)
+int employee_getId(Employee* esteEmpleado,int* id)
 {
     int todoOk = 0;
-    if(this != NULL && id != NULL)
+    if(esteEmpleado != NULL && id != NULL)
     {
-        *id = this->id;
-        todoOk = 1;
-    }
-    return todoOk;
-}
-
-int employee_setNombre(Employee* this,char* nombre)
-{
-    int todoOk = 0;
-    if(this !=NULL && nombre != NULL)
-    {
-        strcpy(this->nombre, nombre);
-        todoOk = 1;
-    }
-    return todoOk;
-}
-int employee_getNombre(Employee* this,char* nombre)
-{
-    int todoOk = 0;
-    if(this !=NULL && nombre != NULL)
-    {
-        strcpy(nombre,this->nombre);
+        *id = esteEmpleado->id;
         todoOk = 1;
     }
     return todoOk;
 }
 
-int employee_setHorasTrabajadas(Employee* this,int horasTrabajadas)
+int employee_setNombre(Employee* esteEmpleado,char* nombre)
+{
+    int todoOk = 0;
+    printf("estoy dentro de la funcion set nombre");
+    if(esteEmpleado == NULL || nombre == NULL)
+    {
+        printf("es null");
+        system("pause");
+    } else
+    if(esteEmpleado !=NULL && nombre != NULL)
+    {
+        strcpy(esteEmpleado->nombre, nombre);
+        todoOk = 1;
+    }
+    return todoOk;
+}
+int employee_getNombre(Employee* esteEmpleado,char* nombre)
+{
+    int todoOk = 0;
+    if(esteEmpleado !=NULL && nombre != NULL)
+    {
+        strcpy(esteEmpleado->nombre, nombre);
+        todoOk = 1;
+    }
+    return todoOk;
+}
+
+int employee_setHorasTrabajadas(Employee* esteEmpleado,int horasTrabajadas)
 {
     int todoOk= 0;
-    if(this != NULL && horasTrabajadas > 0)
+    if(esteEmpleado != NULL && horasTrabajadas > 0)
     {
-        this->horasTrabajadas = horasTrabajadas;
+        esteEmpleado->horasTrabajadas = horasTrabajadas;
         todoOk = 1;
     }
     return todoOk;
 }
-int employee_getHorasTrabajadas(Employee* this,int* horasTrabajadas)
+int employee_getHorasTrabajadas(Employee* esteEmpleado,int* horasTrabajadas)
 {
     int todoOk= 0;
-    if(this != NULL && horasTrabajadas != NULL)
+    if(esteEmpleado != NULL && horasTrabajadas != NULL)
     {
-        *horasTrabajadas = this->horasTrabajadas;
+        *horasTrabajadas = esteEmpleado->horasTrabajadas;
         todoOk = 1;
     }
     return todoOk;
 }
 
-int employee_setSueldo(Employee* this,int sueldo)
+int employee_setSueldo(Employee* esteEmpleado,int sueldo)
 {
     int todoOk = 0;
-    if(this != NULL && sueldo > 0)
+    if(esteEmpleado != NULL && sueldo > 0)
     {
-        this->sueldo = sueldo;
+        esteEmpleado->sueldo = sueldo;
         todoOk = 1;
     }
     return todoOk;
 }
 
-int employee_getSueldo(Employee* this,int* sueldo)
+int employee_getSueldo(Employee* esteEmpleado,int* sueldo)
 {
     int todoOk = 0;
-    if(this != NULL && sueldo != NULL)
+    if(esteEmpleado != NULL && sueldo != NULL)
     {
-        *sueldo = this->sueldo;
+        *sueldo = esteEmpleado->sueldo;
         todoOk = 1;
     }
     return todoOk;
 
 }
 
+Employee* employee_newParametros(int id,char* nombre,int horasTrabajadas,int sueldo)
+{
+    Employee* auxiliarEmpleado;
+
+    auxiliarEmpleado = employee_new();
+
+    employee_setId(auxiliarEmpleado, id);
+    employee_setNombre(auxiliarEmpleado,nombre);
+    employee_setHorasTrabajadas(auxiliarEmpleado,horasTrabajadas);
+    employee_setSueldo(auxiliarEmpleado, sueldo);
+
+    return auxiliarEmpleado;
+}
