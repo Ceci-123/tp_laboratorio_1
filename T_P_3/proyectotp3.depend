@@ -1,37 +1,48 @@
 # depslib dependency file v1.0
-1623955306 source:c:\users\user\desktop\proyectotp3\controller.c
+1623986495 source:c:\users\user\desktop\proyectotp3\controller.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
 	"LinkedList.h"
 	"Employee.h"
 	"parser.h"
+	"validaciones.h"
 	"Controller.h"
 
-1565993298 c:\users\user\desktop\proyectotp3\linkedlist.h
+1624032895 c:\users\user\desktop\proyectotp3\linkedlist.h
 
-1623954663 c:\users\user\desktop\proyectotp3\employee.h
+1624032780 c:\users\user\desktop\proyectotp3\employee.h
 
-1623955151 source:c:\users\user\desktop\proyectotp3\employee.c
+1623990000 source:c:\users\user\desktop\proyectotp3\employee.c
+	<stdlib.h>
+	<stdio.h>
 	"Employee.h"
 	<string.h>
-	<stdio.h>
-	<stdlib.h>
 
-1623873332 source:c:\users\user\desktop\proyectotp3\main.c
+1623987927 source:c:\users\user\desktop\proyectotp3\main.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
 	"Controller.h"
 	"Employee.h"
+	"validaciones.h"
 
-1623952453 c:\users\user\desktop\proyectotp3\controller.h
+1623988395 c:\users\user\desktop\proyectotp3\controller.h
 
-1623953679 source:c:\users\user\desktop\proyectotp3\parser.c
+1624033466 source:c:\users\user\desktop\proyectotp3\parser.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
 	"Employee.h"
-	"parser.h"
 
-1623798400 c:\users\user\desktop\proyectotp3\parser.h
+1624033842 c:\users\user\desktop\proyectotp3\parser.h
+
+1624036207 c:\users\user\desktop\proyectotp3\validaciones.h
+	<stdio.h>
+	<stdlib.h>
+
+1623972449 source:c:\users\user\desktop\proyectotp3\validaciones.c
+	"validaciones.h"
+	"string.h"
+	<ctype.h>
 

@@ -1,147 +1,164 @@
+#include <stdlib.h>
+#include <stdio.h>
 #include "Employee.h"
 #include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
-
-int menu(){
-    int opcion;
-    char ingreso[2];
-    printf("\n  **********************************************************************\n");
-    printf("  **********************************************************************\n");
-    printf(" 1. Cargar los datos de los empleados desde el archivo data.csv (modo texto).\n");
-    printf(" 2. Cargar los datos de los empleados desde el archivo data.bin (modo binario).\n");
-    printf(" 3. Alta de empleado\n");
-    printf(" 4  Modificar datos de empleado\n");
-    printf(" 5  Baja de empleado\n");
-    printf(" 6  Listar empleados\n");
-    printf(" 7  Ordenar empleados\n");
-    printf(" 8  Guardar los datos de los empleados en el archivo data.csv (modo texto).\n");
-    printf(" 9. Guardar los datos de los empleados en el archivo data.bin (modo binario).\n");
-    printf(" 10.Salir \n");
-    printf("\n  **********************************************************************\n");
-    printf("  **********************************************************************\n");
-    fflush(stdin);
-    gets(ingreso);
-    opcion = atoi(ingreso);
-    return opcion;
-
-}
 
 Employee* employee_new()
 {
-    int todoOk = 0;
-    Employee* punteroAEmpleado;
-
-    punteroAEmpleado = malloc(sizeof(Employee));
-    if(punteroAEmpleado != NULL)
+    Employee* pEmpleado;
+    pEmpleado = malloc(sizeof(Employee));
+    if(pEmpleado == NULL)
     {
-        todoOk = 1;
+        printf("No hay espacio suficiente en memoria\n");
+        return 0;
     }
-     return todoOk;
+    return pEmpleado;
 }
+Employee* employee_newParametros(int* id,char* nombre,int* horasTrabajadas,int* sueldo)
+{
+    Employee* pEmpleado;
+    pEmpleado = employee_new();
 
-int employee_setId(Employee* esteEmpleado,int id)
-{
-    int todoOk = 0;
-    if(esteEmpleado != NULL)
+    if(pEmpleado != NULL)
     {
-        esteEmpleado->id = id;
-        todoOk = 1;
+       employee_setId(pEmpleado, *id);
+       employee_setNombre(pEmpleado, nombre);
+       employee_setHorasTrabajadas(pEmpleado, *horasTrabajadas);
+       employee_setSueldo(pEmpleado, *sueldo);
     }
-    return todoOk;
-}
-int employee_getId(Employee* esteEmpleado,int* id)
-{
-    int todoOk = 0;
-    if(esteEmpleado != NULL && id != NULL)
-    {
-        *id = esteEmpleado->id;
-        todoOk = 1;
-    }
-    return todoOk;
+
+    return pEmpleado;
 }
 
-int employee_setNombre(Employee* esteEmpleado,char* nombre)
-{
-    int todoOk = 0;
-    printf("estoy dentro de la funcion set nombre");
-    if(esteEmpleado == NULL || nombre == NULL)
-    {
-        printf("es null");
-        system("pause");
-    } else
-    if(esteEmpleado !=NULL && nombre != NULL)
-    {
-        strcpy(esteEmpleado->nombre, nombre);
-        todoOk = 1;
-    }
-    return todoOk;
-}
-int employee_getNombre(Employee* esteEmpleado,char* nombre)
-{
-    int todoOk = 0;
-    if(esteEmpleado !=NULL && nombre != NULL)
-    {
-        strcpy(nombre,esteEmpleado->nombre);
-        todoOk = 1;
-    }
-    return todoOk;
-}
-
-int employee_setHorasTrabajadas(Employee* esteEmpleado,int horasTrabajadas)
+int employee_setNombre(Employee* employee,char* nombre)
 {
     int todoOk= 0;
-    if(esteEmpleado != NULL && horasTrabajadas > 0)
+    if(employee !=NULL && nombre != NULL)
     {
-        esteEmpleado->horasTrabajadas = horasTrabajadas;
-        todoOk = 1;
-    }
-    return todoOk;
-}
-int employee_getHorasTrabajadas(Employee* esteEmpleado,int* horasTrabajadas)
-{
-    int todoOk= 0;
-    if(esteEmpleado != NULL && horasTrabajadas != NULL)
-    {
-        *horasTrabajadas = esteEmpleado->horasTrabajadas;
-        todoOk = 1;
+       strcpy(employee->nombre, nombre);
+       todoOk = 1;
     }
     return todoOk;
 }
 
-int employee_setSueldo(Employee* esteEmpleado,int sueldo)
+int employee_getNombre(Employee* employee,char* nombre)
 {
     int todoOk = 0;
-    if(esteEmpleado != NULL && sueldo > 0)
+    if(employee !=NULL && nombre != NULL)
     {
-        esteEmpleado->sueldo = sueldo;
-        todoOk = 1;
+       strcpy(nombre,employee->nombre);
+       todoOk = 1;
     }
     return todoOk;
+
 }
 
-int employee_getSueldo(Employee* esteEmpleado,int* sueldo)
+int employee_setSueldo(Employee* employee,int sueldo)
 {
     int todoOk = 0;
-    if(esteEmpleado != NULL && sueldo != NULL)
+
+    if(employee !=NULL && sueldo > 0)
     {
-        *sueldo = esteEmpleado->sueldo;
+      employee->sueldo = sueldo;
+      todoOk = 1;
+    }
+    return todoOk;
+
+}
+
+int employee_getSueldo(Employee* employee,int* sueldo)
+{
+    int todoOk = 0;
+
+    if(employee != NULL && sueldo != NULL)
+    {
+       *sueldo = employee->sueldo;
+        todoOk = 1;
+    }
+    return todoOk;
+}
+
+int employee_setId(Employee* employee,int id)
+{
+    int todoOk = 0;
+    if(employee !=NULL && id > 0)
+    {
+       employee->id = id;
+       todoOk = 1;
+    }
+    return todoOk;
+
+}
+int employee_getId(Employee* employee,int* id)
+{
+    int todoOk = 0;
+    if(employee !=NULL && id != NULL)
+    {
+        *id = employee->id;
         todoOk = 1;
     }
     return todoOk;
 
 }
 
-Employee* employee_newParametros(int id,char* nombre,int horasTrabajadas,int sueldo)
+int employee_setHorasTrabajadas(Employee* employee,int horasTrabajadas)
 {
-    Employee* auxiliarEmpleado;
+    int todoOk = 0;
 
-    auxiliarEmpleado = employee_new();
+    if(employee != NULL && horasTrabajadas > 0)
+    {
+       employee->horasTrabajadas = horasTrabajadas;
+       todoOk = 1;
+    }
+    return todoOk;
 
-    employee_setId(auxiliarEmpleado, id);
-    employee_setNombre(auxiliarEmpleado,nombre);
-    employee_setHorasTrabajadas(auxiliarEmpleado,horasTrabajadas);
-    employee_setSueldo(auxiliarEmpleado, sueldo);
+}
 
-    return auxiliarEmpleado;
+int employee_getHorasTrabajadas(Employee* employee,int* horasTrabajadas)
+{
+    int todoOk = 0;
+
+    if(employee != NULL && horasTrabajadas != NULL)
+    {
+      *horasTrabajadas = employee->horasTrabajadas;
+       todoOk = 1;
+    }
+    return todoOk;
+}
+
+int employee_CompareByName(Employee* employee1, Employee* employee2)
+{
+    int resultado;
+
+    if(employee1 != NULL && employee2 != NULL)
+    {
+        resultado = strcmp(employee1->nombre, employee2->nombre);
+    }
+    return resultado;
+}
+
+int employee_CompareById(Employee* employee1, Employee* employee2)
+{
+    int resultado;
+
+    if(employee1 != NULL && employee2 != NULL)
+    {
+       if(employee1->id > employee2->id)
+    {
+        resultado = 1;
+    }
+    else
+    {
+        if(employee1->id < employee2->id)
+        {
+            resultado = -1;
+        }
+        else
+        {
+            resultado = 0;
+        }
+    }
+
+    }
+   return resultado;
 }

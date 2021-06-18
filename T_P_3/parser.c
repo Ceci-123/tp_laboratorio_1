@@ -2,59 +2,46 @@
 #include <stdlib.h>
 #include "LinkedList.h"
 #include "Employee.h"
-#include "parser.h"
 
-/** \brief Parsea los datos los datos de los empleados desde el archivo data.csv (modo texto).
- *
- * \param path char*
- * \param pArrayListEmployee LinkedList*
- * \return int
- *
- */
-int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
+int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
 {
-    Employee* auxiliarEmpleado;
-    char idChar[6];
-    char nombre[128];
-    char horasTrabajadasChar[10];
-    char sueldoChar[10];
-    int idNumero;
-    int horasTrabajadasNumero;
-    int sueldoNumero;
-    int todoOk = 0;
-
+    Employee* pEmpleado;
+    char id[21];
+    char nombre[21];
+    char horasTrabajadas[21];
+    char sueldo[21];
+    int idNum;
+    int horasNum;
+    int sueldoNum;
+    fseek(pFile,33,SEEK_SET);
     while(!feof(pFile))
     {
-        fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",idChar,nombre,horasTrabajadasChar,sueldoChar);
-        idNumero = atoi(idChar);
-        horasTrabajadasNumero = atoi(horasTrabajadasChar);
-        sueldoNumero = atoi(sueldoChar);
-        auxiliarEmpleado = employee_newParametros(idNumero,nombre,horasTrabajadasNumero, sueldoNumero);
-        ll_add(pArrayListEmployee, auxiliarEmpleado);
-        todoOk = 1;
+    fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",id,nombre,horasTrabajadas,sueldo);
+    idNum = atoi(id);
+    horasNum = atoi(horasTrabajadas);
+    sueldoNum = atoi(sueldo);
+    pEmpleado = employee_newParametros(&idNum,nombre,&horasNum,&sueldoNum);
+    ll_add(pArrayListEmployee,pEmpleado);
     }
-    return todoOk;
+    return 1;
 }
 
-/** \brief Parsea los datos los datos de los empleados desde el archivo data.csv (modo binario).
- *
- * \param path char*
- * \param pArrayListEmployee LinkedList*
- * \return int
- *
- */
-int parser_EmployeeFromBinary(FILE* pFile , LinkedList* pArrayListEmployee)
+int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee)
 {
-   int todoOk = 0;
-   Employee* auxiliarEmpleado;
+    Employee* pEmpleado;
+    int devolucionFread;
 
-   while(!feof(pFile))
-   {
-       auxiliarEmpleado = employee_new();
-       fread(auxiliarEmpleado, sizeof(Employee), 1, pFile);
-       ll_add(pArrayListEmployee, auxiliarEmpleado);
-       todoOk = 1;
-   }
+    fseek(pFile,33,SEEK_SET);
+    while(!feof(pFile))
+    {
+        pEmpleado = employee_new();
+        devolucionFread = fread(pEmpleado,sizeof(Employee),1,pFile);
+        if(devolucionFread != 1)
+        {
+            break;
+        }
+        ll_add(pArrayListEmployee,pEmpleado);
 
-    return todoOk;
+    }
+    return 1;
 }
