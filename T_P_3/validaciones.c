@@ -100,6 +100,8 @@ int obtenerCadena(char mensaje[],char cadena[])
 int menuOpciones()
 {
     int opcion;
+    char ingreso[2];
+
     printf("---------------------------------------------------------------------------\n");
     printf("---------------------------------------------------------------------------\n");
     printf("1. Cargar los datos de los empleados desde el archivo data.csv (modo texto).\n");
@@ -115,7 +117,9 @@ int menuOpciones()
     printf("---------------------------------------------------------------------------\n");
     printf("---------------------------------------------------------------------------\n");
     printf("\nIngrese Una Opcion: ");
-    scanf("%d",&opcion);
+    fflush(stdin);
+    gets(ingreso);
+    opcion = atoi(ingreso);
     opcion = validacionDeNumero(opcion,1,10);
     return opcion;
 }
