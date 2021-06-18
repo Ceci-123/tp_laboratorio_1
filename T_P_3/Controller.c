@@ -175,11 +175,13 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
                 break;
             case 2:
                 nuevoNumero = obtenerNumero("Ingrese nueva cantidad de horas trabajadas:");
+                nuevoNumero = validacionDeNumero(nuevoNumero,1,5000);
                 employee_setHorasTrabajadas(pEmpleado,nuevoNumero);
                 todoOk = 1;
                 break;
             case 3:
                 nuevoNumero = obtenerNumero("Ingrese nuevo sueldo");
+                nuevoNumero = validacionDeNumero(nuevoNumero,1,1000000);
                 employee_setSueldo(pEmpleado,nuevoNumero);
                 todoOk = 1;
                 break;
