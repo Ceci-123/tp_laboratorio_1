@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1623986495 source:c:\users\user\desktop\proyectotp3\controller.c
+1624039588 source:c:\users\user\desktop\proyectotp3\controller.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -9,7 +9,7 @@
 	"validaciones.h"
 	"Controller.h"
 
-1624032895 c:\users\user\desktop\proyectotp3\linkedlist.h
+1624038873 c:\users\user\desktop\proyectotp3\linkedlist.h
 
 1624032780 c:\users\user\desktop\proyectotp3\employee.h
 
@@ -41,7 +41,7 @@
 	<stdio.h>
 	<stdlib.h>
 
-1623972449 source:c:\users\user\desktop\proyectotp3\validaciones.c
+1624037416 source:c:\users\user\desktop\proyectotp3\validaciones.c
 	"validaciones.h"
 	"string.h"
 	<ctype.h>

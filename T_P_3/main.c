@@ -88,6 +88,7 @@ int main()
         break;
     case 7:
         resultado = controller_sortEmployee(miLista);
+        controller_ListEmployee(miLista);
         if(resultado != 1)
         {
            printf("Error al ordenar la lista\n");
