@@ -32,6 +32,7 @@ int main(void) {
 	 int opcion;
 	 int devolucionDeValidacion;
 	 char auxiliarSalario[10];
+	 int validacion;
 
 	 // inicializo array
      setbuf(stdout, NULL);
@@ -65,9 +66,28 @@ int main(void) {
 	        printf("Ingrese su nombre :");
 	        fflush(stdin);
 	        gets(auxiliar.name);
-	        printf("Ingrese su apellido :");
+	        validacion = sonLetras(auxiliar.name);
+	        while(validacion == -1)
+	        {
+	        	printf("No puede ingresar numeros");
+	        	printf("Error, reingrese su nombre :");
+	        	fflush(stdin);
+	        	gets(auxiliar.name);
+	        	validacion = sonLetras(auxiliar.name);
+	        }
+            printf("Ingrese su apellido :");
 	        fflush(stdin);
 	        gets(auxiliar.lastName);
+	        validacion = sonLetras(auxiliar.lastName);
+	        while(validacion == -1)
+	        {
+	        	printf("No puede ingresar numeros");
+	        	printf("Error, reingrese su apellido :");
+	        	fflush(stdin);
+	        	gets(auxiliar.lastName);
+	        	validacion = sonLetras(auxiliar.lastName);
+	        }
+
 	        printf("Ingrese su sector: 1-Ventas, 2-RRHH, 3-Contable, 4-Administracion, 5-Sistemas");
 	        scanf("%d", &auxiliar.sector);
 	        while(auxiliar.sector < 1 || auxiliar.sector > 5 )

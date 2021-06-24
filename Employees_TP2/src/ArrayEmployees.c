@@ -107,6 +107,7 @@ int printEmployee(eEmployee lista[], int tamanio)
                  {
                      mostrarSector(lista[i].sector, auxiliarChar);
                      printf("%2d  %20s %20s        %6.2f        %2d  %s \n \n", lista[i].id, lista[i].name, lista[i].lastName, lista[i].salary, lista[i].sector, auxiliarChar);
+
                  }
 
              }
@@ -157,6 +158,8 @@ int findEmployeeById(eEmployee lista[], int tamanio, int id)
 int removeEmployee(eEmployee lista[], int tamanio, int indice)
 {
     int todoOk = -1;
+
+
     if(lista != NULL && tamanio > 0)
     {
         for(int i= 0; i < tamanio; i++)
@@ -235,6 +238,7 @@ int modificarEmployee(eEmployee lista[], int tamanio, int id)
  char auxiliarChar[20];
  float auxiliarFloat = 0;
  int auxiliarInt = 0;
+ int validacion;
 
     if(lista != NULL && tamanio > 0)
     {
@@ -251,9 +255,18 @@ int modificarEmployee(eEmployee lista[], int tamanio, int id)
                 switch(opcion)
                 {
                 case 1:
-                    printf("Ingrese el nuevo nombre: ");
+                	printf("Ingrese el nuevo nombre: ");
                     fflush(stdin);
                     gets(auxiliarChar);
+                    validacion = sonLetras(auxiliarChar);
+                    while(validacion == -1)
+                    {
+                         	printf("No puede ingresar numeros");
+                           	printf("Error, reingrese su nombre :");
+                           	fflush(stdin);
+                           	gets(auxiliarChar);
+                    	    validacion = sonLetras(auxiliarChar);
+                    }
                     strcpy(lista[indice].name,auxiliarChar);
                     printf("Nuevo nombre: %s\n", auxiliarChar);
                     todoOk = 0;
@@ -262,14 +275,34 @@ int modificarEmployee(eEmployee lista[], int tamanio, int id)
                     printf("Ingrese el nuevo apellido: ");
                     fflush(stdin);
                     gets(auxiliarChar);
-                    strcpy(lista[indice].lastName,auxiliarChar);
+                    validacion = sonLetras(auxiliarChar);
+                    while(validacion == -1)
+                    {
+                      	printf("No puede ingresar numeros");
+                       	printf("Error, reingrese su apellido :");
+                       	fflush(stdin);
+                       	gets(auxiliarChar);
+                   	    validacion = sonLetras(auxiliarChar);
+                    }
+                	strcpy(lista[indice].lastName,auxiliarChar);
                     printf("Nuevo apellido: %s\n", auxiliarChar);
                     todoOk = 0;
                     break;
                 case 3:
-                    printf("Ingrese el nuevo salario: ");
-                    scanf("%f", &auxiliarFloat);
-                    lista[indice].salary = auxiliarFloat;
+                	printf("Ingrese el nuevo salario :");
+                	fflush(stdin);
+                	gets(auxiliarChar);
+                	validacion = validarNumero(auxiliarChar, &auxiliarFloat);
+                	if(validacion != 1)
+                	{
+                	    printf("Error, reingrese su salario :");
+                	    fflush(stdin);
+                	    gets(auxiliarChar);
+                		validacion = validarNumero(auxiliarChar, &auxiliarFloat);
+            		 }
+                   // printf("Ingrese el nuevo salario: ");
+                   // scanf("%f", &auxiliarFloat);
+                    //lista[indice].salary = auxiliarFloat;
                     printf("Nuevo salario: %.2f\n", auxiliarFloat);
                     todoOk = 0;
                     break;
@@ -336,7 +369,16 @@ int informeContable(eEmployee lista[], int tamanio)
     else
     {
        printf("%2d de nuestros empleados superan el salario promedio\n", contadorDeEmpleadosBuenSueldo);
+       printf("-------------------------- NOMINA DE EMPLEADOS --------------------------------\n");
+       printf(" Nombre             Apellido   \n");
     }
+    for(int i= 0; i < tamanio; i ++)
+        {
+           if(lista[i].salary > promedio && lista[i].isEmpty == 0)
+           {
+               printf("%s   %s\n", lista[i].name, lista[i].lastName);
+           }
+        }
     printf("-----------------------------------------------------------------\n\n");
 
     todoOk = 0;
@@ -378,3 +420,22 @@ void mostrarSector(int idSector, char nombreSector[15])
 
 }
 
+int sonLetras(char cadena[])
+{
+    int todoOk= -1;
+    int i;
+    int longitud = strlen(cadena);
+
+      for(i= 0; i < longitud; i++)
+      {
+          if((cadena[i] > 65 && cadena[i] < 90) || (cadena[i] > 97 && cadena[i] < 122))
+          {
+              //son letras
+              todoOk= 1;
+          }
+      }
+
+   // devuelve 1 si son letras, devuelve -1 si son numeros
+
+    return todoOk;
+}

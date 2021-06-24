@@ -142,5 +142,13 @@ int validarNumero(char cadena[], float *variable);
  */
 void mostrarSector(int idSector, char nombreSector[15]);
 
+/** \brief Valida que la cadena ingresada tenga letras o numeros
+ *
+ * \param La cadena a evaluar
+ * \return Un entero, devuelve 1 si son letras, devuelve -1 si son numeros
+ *
+ */
+int sonLetras(char cadena[]);
+
 
 #endif /* ARRAYEMPLOYEES_H_ */
