@@ -153,7 +153,7 @@ int ll_add(LinkedList* this, void* pElement)
     if(this != NULL)
     {
         tamanio=ll_len(this);
-        control = addNode(this,tamanio,pElement); //agrega el elemento dentro de un nodo nuevo al final de la LL
+        control = addNode(this,tamanio,pElement); //agrega el elemento dentro de un nodo nuevo al final de la lista
         if(control != -1)
         {
             returnAux=0;
@@ -163,10 +163,10 @@ int ll_add(LinkedList* this, void* pElement)
     return returnAux;
 }
 
-/** \brief Permite realizar el test de la funcion addNode la cual es privada
+/** \brief Devuelve un puntero al elemento que se encuentra en el indice especificado
  *
  * \param this LinkedList* Puntero a la lista
- * \param nodeIndex int Ubicacion del elemento a obtener
+ * \param index int Ubicacion del elemento a obtener
  * \return void* Retorna    (NULL) Error: si el puntero a la lista es NULL o (si el indice es menor a 0 o mayor al len de la lista)
                             (pElement) Si funciono correctamente
  *
@@ -185,10 +185,10 @@ void* ll_get(LinkedList* this, int index)
 }
 
 
-/** \brief Modifica un elemento de la lista
+/** \brief Inserta un elemento en la lista, en el indice especificado
  *
  * \param this LinkedList* Puntero a la lista
- * \param nodeIndex int Ubicacion del elemento a modificar
+ * \param index int Indice donde quiero insertar
  * \param pElement void* Puntero al nuevo elemento
  * \return int Retorna  (-1) Error: si el puntero a la lista es NULL o (si el indice es menor a 0 o mayor al len de la lista)
                         ( 0) Si funciono correctamente
@@ -201,9 +201,10 @@ int ll_set(LinkedList* this, int index,void* pElement)
 
     if(this!=NULL && index>=0 && index<ll_len(this))
     {
-        returnAux = 0;
+
         actual = getNode(this,index);
         actual->pElement = pElement;
+        returnAux = 0;
     }
     return returnAux;
 }
