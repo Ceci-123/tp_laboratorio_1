@@ -456,7 +456,7 @@ int ll_containsAll(LinkedList* this,LinkedList* this2)
         returnAux = 1;
         for(int i=0;i<tamThis2;i++)
         {
-           if(! ll_contains(this,ll_get(this2,i)));   // ERROR
+           if(!ll_contains(this,ll_get(this2,i)))
            {
                 returnAux = 0;
                 break;
@@ -528,47 +528,30 @@ LinkedList* ll_clone(LinkedList* this)
 int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
 {
     int returnAux =-1;
-    void* pElemento1;
-    void* pElemento2;
-    void* pAux;
-    int size;
-    int i;
-    int j;
+    void*  auxI = NULL;
+    void* auxJ = NULL;
+    int tam;
 
-    if(this != NULL && pFunc != NULL && (order==0||order==1))
-    {
-        returnAux = 0;
-        size = ll_len(this);
-
-        for(i=0;i<size-1;i++)
+    if(this != NULL && pFunc != NULL && order >=0 && order <=1)
         {
-            for(j=i+1;j<size;j++)
+            tam = ll_len(this);
+            for (int i = 0; i < tam -1; i++)
             {
-                pElemento1 = (void*)ll_get(this,i);
-                pElemento2 = (void*)ll_get(this,j);
-                if(order == 0)
+                for(int j = i + 1; j < tam; j++ )
                 {
-                    if(pFunc((void*)pElemento1,(void*)pElemento2)<0)
+                    auxI = ll_get(this,i);
+                    auxJ= ll_get(this,j);
+                    if((pFunc(auxI,auxJ) > 0 && order)
+                       || (pFunc(auxI,auxJ) < 0 && !order ))
                     {
-                        pAux = pElemento1;
-                        ll_set(this,i,pElemento2);
-                        ll_set(this,j,pAux);
-                    }
-                }
-                else
-                {
-                    if(pFunc((void*)pElemento1,(void*)pElemento2)>0)
-                    {
-                        pAux = pElemento1;
-                        ll_set(this,i,pElemento2);
-                        ll_set(this,j,pAux);
+                         ll_set(this,i, auxJ);
+                         ll_set(this,j, auxI);
                     }
                 }
             }
+                returnAux = 0;
         }
-    }
 
     return returnAux;
-
 }
 
