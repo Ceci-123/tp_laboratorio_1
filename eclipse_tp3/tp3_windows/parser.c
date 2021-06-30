@@ -7,29 +7,39 @@ int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
 {
     Employee* pEmpleado;
     char id[21];
-    char nombre[21];
+    char nombre[50];
     char horasTrabajadas[21];
     char sueldo[21];
-    int idNum;
-    int horasNum;
-    int sueldoNum;
-    fseek(pFile,33,SEEK_SET);
-    while(!feof(pFile))
+    int retorno= 0;
+
+    if(pFile != NULL && pArrayListEmployee != NULL)
     {
-    fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",id,nombre,horasTrabajadas,sueldo);
-    idNum = atoi(id);
-    horasNum = atoi(horasTrabajadas);
-    sueldoNum = atoi(sueldo);
-    pEmpleado = employee_newParametros(&idNum,nombre,&horasNum,&sueldoNum);
-    ll_add(pArrayListEmployee,pEmpleado);
+        //lectura fantasma del encabezado
+        fscanf(pFile,"%s\n",nombre);
+         while(!feof(pFile))
+        {
+           if(fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n] \n",id,nombre,horasTrabajadas,sueldo) == 4)
+           {
+               pEmpleado = employee_newParametros(id,nombre,horasTrabajadas,sueldo);
+               ll_add(pArrayListEmployee,pEmpleado);
+
+           }
+            else
+            {
+                break;
+            }
+        }
+        retorno = 1;
     }
-    return 1;
+
+    return retorno;
 }
 
 int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee)
 {
     Employee* pEmpleado;
     int devolucionFread;
+    int retorno = 0;
 
     fseek(pFile,33,SEEK_SET);
     while(!feof(pFile))
@@ -41,7 +51,7 @@ int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee)
             break;
         }
         ll_add(pArrayListEmployee,pEmpleado);
-
+        retorno = 1;
     }
-    return 1;
+    return retorno;
 }
