@@ -16,14 +16,13 @@ Employee* employee_new();
 
 /** \brief Crea un espacio en memoria dinámica para la estructura empleado, pasandole los parámetros que quiero agregar
  *
- * \param Un puntero a un entero, el id
- * \param Un puntero al nombre
- * \param Un puntero a un entero, las horas trabajadas
- * \param Un puntero a un entero, el sueldo
- * \return Puntero al empleado
+ * \param Un puntero a char, el id
+ * \param Un puntero a char,el nombre
+ * \param Un puntero a char, las horas trabajadas
+ * \param Un puntero a char, el sueldo
+ * \return Puntero al empleado creado
  **/
-Employee* employee_newParametros(int* id,char* nombre,int* horasTrabajadas,int* sueldo);
-
+ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr,char* sueldoStr);
 
 /** \brief Escribe la variable parámetro en el campo ID de la estructura empleado
  *
@@ -95,21 +94,21 @@ int employee_getSueldo(Employee* employee,int* sueldo);
 
 /** \brief Compara el campo NOMBRE de ambas estructuras empleado y devuelve el resultado
  *
- * \param  Puntero al primer empleado
- * \param  Puntero al segundo empleado
+ * \param  Puntero al primer empleado (void)
+ * \param  Puntero al segundo empleado (void)
  * \return Un entero, si las cadenas son iguales retornara un valor 0, si la primera cadena es mayor
  *         retornara un valor positivo y si es menor retornara un valor negativo.
  **/
-int employee_CompareByName(Employee* e1, Employee* e2);
+int employee_CompareByName(void* e1, void* e2);
 
 
 /** \brief Compara el campo ID de ambas estructuras empleado y devuelve el resultado
  *
- * \param Puntero al primer empleado
- * \param Puntero al segundo empleado
+ * \param Puntero al primer empleado (void)
+ * \param Puntero al segundo empleado (void)
  * \return Un entero, devuelve 1(si el primero es mayor que el segundo),
  *        -1 (si el primero es menor que el segundo) o 0 si son iguales
  **/
-int employee_CompareById(Employee* e1, Employee* e2);
+int employee_CompareById(void* e1, void* e2);
 
 #endif // employee_H_INCLUDED

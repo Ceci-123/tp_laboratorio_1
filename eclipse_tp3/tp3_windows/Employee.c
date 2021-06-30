@@ -14,17 +14,27 @@ Employee* employee_new()
     }
     return pEmpleado;
 }
-Employee* employee_newParametros(int* id,char* nombre,int* horasTrabajadas,int* sueldo)
+Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr,char* sueldoStr)
 {
     Employee* pEmpleado;
+    int flag = 0;
     pEmpleado = employee_new();
 
     if(pEmpleado != NULL)
     {
-       employee_setId(pEmpleado, *id);
-       employee_setNombre(pEmpleado, nombre);
-       employee_setHorasTrabajadas(pEmpleado, *horasTrabajadas);
-       employee_setSueldo(pEmpleado, *sueldo);
+         if(employee_setId(pEmpleado, atoi(idStr)) == 1 &&
+            employee_setNombre(pEmpleado, nombreStr)==1 &&
+            employee_setHorasTrabajadas(pEmpleado, atoi(horasTrabajadasStr))==1 &&
+            employee_setSueldo(pEmpleado,atoi(sueldoStr)) ==1)
+           {
+               flag = 1;
+           }
+        if(flag == 0)
+        {
+            printf("Ocurrio un error al crear el empleado");
+            system("pause");
+        }
+
     }
 
     return pEmpleado;
@@ -126,30 +136,38 @@ int employee_getHorasTrabajadas(Employee* employee,int* horasTrabajadas)
     return todoOk;
 }
 
-int employee_CompareByName(Employee* employee1, Employee* employee2)
+int employee_CompareByName(void* employee1, void* employee2)
 {
     int resultado;
+    Employee* auxiliar1 = NULL;
+    Employee* auxiliar2 = NULL;
 
     if(employee1 != NULL && employee2 != NULL)
     {
-        resultado = strcmp(employee1->nombre, employee2->nombre);
+       auxiliar1 = (Employee*) employee1;
+       auxiliar2 = (Employee*) employee2;
+       resultado = strcmp(auxiliar1->nombre, auxiliar2->nombre);
     }
     return resultado;
 }
 
-int employee_CompareById(Employee* employee1, Employee* employee2)
+int employee_CompareById(void* employee1, void* employee2)
 {
     int resultado;
+    Employee* auxiliar1 = NULL;
+    Employee* auxiliar2 = NULL;
 
     if(employee1 != NULL && employee2 != NULL)
     {
-       if(employee1->id > employee2->id)
+       auxiliar1 = (Employee*) employee1;
+       auxiliar2 = (Employee*) employee2;
+       if(auxiliar1->id > auxiliar2->id)
     {
         resultado = 1;
     }
     else
     {
-        if(employee1->id < employee2->id)
+        if(auxiliar1->id < auxiliar2->id)
         {
             resultado = -1;
         }
@@ -162,6 +180,3 @@ int employee_CompareById(Employee* employee1, Employee* employee2)
     }
    return resultado;
 }
-
-
-
