@@ -4855,7 +4855,7 @@
 
 1560446930 c:\users\user\desktop\linkedlist_cascara_v8\testing\utest.h
 
-1560446930 c:\users\user\desktop\linkedlist_cascara_v8\inc\linkedlist.h
+1625075988 c:\users\user\desktop\linkedlist_cascara_v8\inc\linkedlist.h
 
 1560446930 c:\users\user\desktop\linkedlist_cascara_v8\testing\inc\employee.h
 
@@ -5076,18 +5076,28 @@
 	<stdlib.h>
 	<string.h>
 
-1560512662 source:c:\users\user\desktop\linkedlist_cascara_v8\src\linkedlist.c
+1625074068 source:c:\users\user\desktop\linkedlist_cascara_v8\src\linkedlist.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"../inc/LinkedList.h"
 
-1624410007 source:c:\users\user\desktop\linkedlist_cascara_v8\src\main.c
+1625078904 source:c:\users\user\desktop\linkedlist_cascara_v8\src\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"../testing/inc/main_test.h"
 	"../inc/LinkedList.h"
+	"mascota.h"
 
 1560446930 c:\users\user\desktop\linkedlist_cascara_v8\testing\inc\main_test.h
+
+1625078991 c:\users\user\desktop\linkedlist_cascara_v8\src\mascota.h
+	"../inc/LinkedList.h"
+
+1625079162 source:c:\users\user\desktop\linkedlist_cascara_v8\src\mascota.c
+	"mascota.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
 

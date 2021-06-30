@@ -128,10 +128,10 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Extensions>
-			<code_completion />
-			<debugger />
-			<envvars />
-		</Extensions>
+		<Unit filename="mascota.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mascota.h" />
+		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

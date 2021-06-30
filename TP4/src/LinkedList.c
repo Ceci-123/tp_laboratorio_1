@@ -555,3 +555,42 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
     return returnAux;
 }
 
+
+/** \brief Devuelve un nuevo linkedlist cargado con los elementos que pasan la funcion filtro
+ *
+ * \param Linkedlist a filtrar
+ * \param puntero a la funcion que filtra
+ * \return nuevo puntero a linkedlist con lo elementos que pasaron la funcion
+ *
+ */
+LinkedList* ll_filter(LinkedList*  this, int (* pFunc)(void*) )
+{
+   LinkedList* filterList = NULL;
+   void* aux = NULL;
+   int tam = 0;
+
+    if(this != NULL && pFunc != NULL)
+    {
+        filterList = ll_newLinkedList();
+        if(filterList != NULL)
+        {
+            tam = ll_len(this);
+            for(int i= 0; i <tam ; i++)
+            {
+                aux = ll_get(this,i);
+                if(pFunc(aux))
+                {
+                   if( ll_add(filterList,aux ))
+                   {
+                      ll_deleteLinkedList(filterList);
+                       filterList = NULL;
+                       break;
+                   }
+                }
+            }  // fin del for
+        }
+
+    }
+
+     return filterList;
+}
