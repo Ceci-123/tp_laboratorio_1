@@ -1,0 +1,48 @@
+# depslib dependency file v1.0
+1625572391 source:c:\users\user\desktop\proyectotp3\controller.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Employee.h"
+	"parser.h"
+	"validaciones.h"
+	"Controller.h"
+
+1624038873 c:\users\user\desktop\proyectotp3\linkedlist.h
+
+1625085817 c:\users\user\desktop\proyectotp3\employee.h
+
+1625086094 source:c:\users\user\desktop\proyectotp3\employee.c
+	<stdlib.h>
+	<stdio.h>
+	"Employee.h"
+	<string.h>
+
+1624135164 source:c:\users\user\desktop\proyectotp3\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+	"validaciones.h"
+
+1623988395 c:\users\user\desktop\proyectotp3\controller.h
+
+1625085674 source:c:\users\user\desktop\proyectotp3\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1624033842 c:\users\user\desktop\proyectotp3\parser.h
+
+1624036207 c:\users\user\desktop\proyectotp3\validaciones.h
+	<stdio.h>
+	<stdlib.h>
+
+1624037416 source:c:\users\user\desktop\proyectotp3\validaciones.c
+	"validaciones.h"
+	"string.h"
+	<ctype.h>
+
